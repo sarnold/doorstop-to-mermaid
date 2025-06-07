@@ -1,9 +1,7 @@
-Simple Python Project
-=====================
+doorstop-to-mermaid
+===================
 
-Python project using simple setuptools project config; note package
-data, scripts, entry points, etc, **all still work** using pyproject.toml
-per `setuptools documentation`_.
+**Generate mermaid_ diagram source from a doorstop_ requirements document.**
 
 |ci| |wheels| |bandit| |release|
 
@@ -11,84 +9,38 @@ per `setuptools documentation`_.
 
 |tag| |license| |reuse| |python|
 
-To use this template, replace the example project name with your own:
+What is doorstop?
+-----------------
 
-* change the project name at the top of ``pyproject.toml``
-* change the package directory name under the ``src`` folder
-* change the github URL paths in ``pyproject.toml``
-* change the project name in ``docs/source/conf.py``
+Doorstop uses git to manage project-specific data, where each linkable
+item (requirement, test case, etc.) is stored as either a YAML or
+Markdown file in a designated (sub)directory.
 
+The items in each directory form a document. The relationship between
+documents forms a tree hierarchy. Doorstop provides mechanisms for
+modifying this tree, validating item traceability, and publishing
+documents in several formats.
 
-.. _setuptools documentation: https://setuptools.pypa.io/en/latest/userguide/package_discovery.html
+What is mermaid?
+----------------
 
-Github workflows and setuptools_scm
------------------------------------
+Mermaid is a diagramming and charting tool with (partial) Github rendering
+support anywhere Mardown is used, including ``anything.md`` files, issues,
+and pull requests.
 
-This project uses setuptools_scm_ for dynamic versioning, therefor some
-of the (github) workflows will look for a git tag to set the version in
-CI. If there are no tags, this will result in some failed workflow runs.
-There are several options to make them succeed:
+Markdown is already a common way to present useful information with
+rich formatting from a relatively simple human readable syntax.
+Especially useful is being able to highlight code blocks.
 
-* create a base tag, eg ``git tag -a 0.0.0``
-* set SETUPTOOLS_SCM_PRETEND_VERSION to the above value in the workflow env
-* disable failing workflows in the Github Actions tab
-* delete any workflows you don't need
+Mermaid-JS takes this philosophy and applies it to graphs, taking
+simple human-readable syntax and returning rich graphs.
 
-
-Github workflows and repo settings
-----------------------------------
-
-Some of the automation workflows may also fail without some non-default
-repository settings; the following changes are required to allow these
-workflows to run.
-
-Go to the repository Settings tab and scroll to the bottom of the General
-settings and enable these checkboxes under Pull Requests:
-
-* Always suggest updating pull request branches (optional)
-* Allow auto-merge (required)
-* Automatically delete head branches (optional)
-
-Next, in the left-hand menu under the Settings tab, click Actions, then General,
-then scroll to Workflow permissions:
-
-* make sure *Read repository contents and packages permissions* is selected
-* enable the *Allow GitHub Actions to create and approve pull requests* checkbox,
-  then click Save
-
-In addition, the provided dependabot config expects some issue labels, so open the
-project URL below (using your new project name) and add the following new labels:
-
-**https://github.com/<your_name>/<project_name>/issues/labels**
-
-* actions
-* dependencies
-* packaging
+See the `unofficial example gist`_ for ideas.
 
 
-Github best practices
----------------------
-
-Finally, best practices for public repositories includes following extra
-features:
-
-* under Advanced Security enable Code Scanning, Dependabot, Private
-  Vulnerability Reporting, and (default) Codeql config
-* under Rules => Rulesets add some branch protection rules with required
-  status checks
-
-
-Make a ``badges`` branch
-------------------------
-
-Create an orphan branch for Pylint and Coverage workflows. In a fresh
-checkout, run the following commands::
-
-  $ git checkout --orphan badges
-  $ git reset --hard
-  $ git commit --allow-empty -m "Initializing badges branch"
-  $ git push origin badges
-  $ git checkout main
+.. _mermaid: https://mermaid.js.org/
+.. _doorstop: https://doorstop.readthedocs.io/en/latest/index.html
+.. _unofficial example gist: https://gist.github.com/ChristopherA/bffddfdf7b1502215e44cec9fb766dfd
 
 
 Dev tools
