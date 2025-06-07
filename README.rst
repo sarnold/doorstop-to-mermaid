@@ -122,7 +122,7 @@ something like::
 then install it into the repo you just cloned::
 
   $ git clone git@github.com:sarnold/doorstop-to-mermaid.git
-  $ cd radar-test-gui/
+  $ cd doorstop-to-mermaid/
   $ pre-commit install
 
 It's usually a good idea to update the hooks to the latest version::
