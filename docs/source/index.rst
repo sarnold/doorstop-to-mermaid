@@ -1,5 +1,5 @@
-Foobar API and SW Docs
-======================
+ds2mermaid API and SW Docs
+==========================
 
 .. git_commit_detail::
     :branch:
@@ -13,7 +13,7 @@ Foobar API and SW Docs
     :maxdepth: 3
     :caption: Contents:
 
-    readme_include
+    README.md
     api/modules
     dev/generate-changelog
     dev/pre-commit-config
