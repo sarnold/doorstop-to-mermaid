@@ -70,7 +70,7 @@ myst_enable_extensions = [
 # ]
 
 # sphinxcontrib.apidoc
-apidoc_module_dir = '../../src'
+apidoc_module_dir = f'../../src/{project}'
 apidoc_output_dir = 'api'
 apidoc_excluded_paths = ['scripts', 'tests']
 apidoc_module_first = True

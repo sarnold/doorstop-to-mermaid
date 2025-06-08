@@ -1,0 +1,46 @@
+active: true
+derived: false
+doc:
+  by: sarnold
+  copyright: sarnold
+  major: '1'
+  minor: A
+  name: ds2mermaid
+  ref: ''
+  title: Requirements for _ds2mermaid_
+header: ''
+level: 1.0
+links: []
+normative: false
+short-name: reqs_overview
+ref: ''
+reviewed: null
+text: |
+  Requirements overview for ds2mermaid
+
+  The ds2mermaid package is intended to visualize the links between document
+  items in a doorstop document tree. A tree contains one or more documents,
+  where one document is the parent, and the rest are childern. Each document
+  has one or more tracked items, with expected links from child items to
+  their respective parent.
+
+  The main dependencies are shown below.
+
+  - [python-to-mermaid](https://pypi.org/project/python-to-mermaid/)
+  - [doorstop](https://doorstop.readthedocs.io/en/latest/index.html)
+
+  The ds2mermaid package should support the following features/options.
+
+  - support mermaid graph and subgraph types
+  - set graph type
+  - set graph direction
+  - doorstop text selection options
+    - item text
+    - item uid
+    - item short name
+  - output a link diagram in mermaid source format
+
+  > [!IMPORTANT]
+  > The above item `short_name` is a custom doorstop attribute and
+  > must be added to the doorstop config file, as well as populated
+  > with the desired "alias" for the given item.
