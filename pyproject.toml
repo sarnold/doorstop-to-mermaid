@@ -55,7 +55,7 @@ doc = [
     "sphinx",
     "sphinxcontrib.apidoc",
     "sphinx_git",
-    "recommonmark",
+    "myst-parser",
     "sphinx_rtd_theme<3.0",
 ]
 test = [
@@ -81,6 +81,10 @@ log_cli =  true
 doctest_optionflags = ["ELLIPSIS", "NORMALIZE_WHITESPACE",]
 addopts = "--strict-markers"
 markers = "subscript"
+filterwarnings = [
+    "ignore:currentThread:DeprecationWarning",
+    "ignore:co_lnotab:DeprecationWarning",
+]
 
 [tool.coverage.run]
 branch = true

@@ -30,18 +30,18 @@ documents in several formats.
 ## What is mermaid?
 
 Mermaid is a diagramming and charting tool with (partial) Github
-rendering support anywhere Mardown is used, including `anything.md`
+rendering support anywhere Markdown is used, including `anything.md`
 files, issues, and pull requests.
 
 Markdown is already a common way to present useful information with rich
 formatting from a relatively simple human readable syntax. Especially
-useful is being able to highlight code blocks.
+useful is being able to highlight code blocks for mermaid.
 
 Mermaid-JS takes this philosophy and applies it to graphs, taking simple
 human-readable syntax and returning rich graphs.
 
 See the [unofficial example gist](https://gist.github.com/ChristopherA/bffddfdf7b1502215e44cec9fb766dfd)
-for ideas.
+for example ideas.
 
 ## Dev tools
 
@@ -122,7 +122,7 @@ then install it into the repo you just cloned:
 
     git clone git@github.com:sarnold/doorstop-to-mermaid.git
     cd doorstop-to-mermaid/
-    pre-commit install
+    pre-commit install --install-hooks
 
 It's usually a good idea to update the hooks to the latest version:
 

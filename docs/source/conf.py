@@ -1,6 +1,5 @@
 import os
 import sys
-
 from datetime import datetime
 
 if sys.version_info < (3, 8):
@@ -16,8 +15,8 @@ proj_name = 'ds2mermaid'
 # The full version, including alpha/beta/rc tags with setuptols-scm
 # workaround for extra-long dirty version string
 release = version(proj_name).split("+")[0]
-# The short X.Y version.
-version = '.'.join(release.split('.')[:2])
+# we don't need no steenkeeng short X.Y version.
+version = release
 
 project = proj_name
 author = 'Goleta Star, LLC'
@@ -27,14 +26,14 @@ copyright = '2022 - ' + str(datetime.now().year) + f' {author}'
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
-description = 'A foo that bars with a quux'
+description = 'Generate mermaid diagram source from a doorstop requirements document.'
 
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
 #
 # needs_sphinx = '1.0'
-#needs_sphinx = "8.2.0"
+# needs_sphinx = "8.2.0"
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -48,18 +47,26 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
-    'recommonmark',
+    'myst_parser',
+]
+
+myst_suppress_warnings = ["myst.header"]
+myst_enable_extensions = [
+    "attrs_inline",
+    "deflist",
+    "fieldlist",
+    "substitution",
 ]
 
 # autoapi
-#autoapi_dirs = ['../../src']
+# autoapi_dirs = ['../../src']
 
 # API docs
 # apidoc_modules = [
-    # {
-        # "path": f"../../src/{proj_name}",
-        # "destination": "api/",
-    # },
+# {
+# "path": f"../../src/{proj_name}",
+# "destination": "api/",
+# },
 # ]
 
 # sphinxcontrib.apidoc
@@ -76,7 +83,10 @@ templates_path = ['_templates']
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of strings:
 #
-source_suffix = ['.rst', '.md']
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
+}
 
 # The master toctree document.
 master_doc = 'index'
@@ -105,8 +115,8 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-#html_theme = 'sphinx_rtd_theme'
-html_theme = 'classic'  # still has a version
+html_theme = 'sphinx_rtd_theme'
+# html_theme = 'classic'  # still has a version
 
 html_sidebars = {
     '**': [
@@ -126,7 +136,7 @@ html_sidebars = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-#html_static_path = ['_static']
+# html_static_path = ['_static']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
@@ -144,15 +154,12 @@ latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
     # 'papersize': 'letterpaper',
-
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
-
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
-
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
@@ -162,8 +169,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'ds2mermaid.tex', 'ds2mermaid Documentation',
-     [author], 'manual'),
+    (master_doc, 'ds2mermaid.tex', 'ds2mermaid Documentation', [author], 'manual'),
 ]
 
 
@@ -171,10 +177,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'ds2mermaid', 'ds2mermaid Documentation',
-     [author], 1)
-]
+man_pages = [(master_doc, 'ds2mermaid', 'ds2mermaid Documentation', [author], 1)]
 
 
 # -- Options for Texinfo output -------------------------------------------
@@ -183,7 +186,13 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'ds2mermaid', 'ds2mermaid Documentation',
-     [author], 'ds2mermaid', description,
-     'Miscellaneous'),
+    (
+        master_doc,
+        'ds2mermaid',
+        'ds2mermaid Documentation',
+        [author],
+        'ds2mermaid',
+        description,
+        'Miscellaneous',
+    ),
 ]
