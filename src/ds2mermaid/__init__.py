@@ -1,17 +1,38 @@
 """
-Example just for package template. Replace with your own code.
+Mermaid diagram subclass and helper functions.
 """
 
 import re
 from importlib.metadata import version
 from typing import List
 
+from python_to_mermaid import MermaidDiagram
+
 __version__ = version('ds2mermaid')
 
 __all__ = [
+    "MermaidGraph",
     "__version__",
+    "create_subgraph_diagram",
     "get_doorstop_doc_tree",
 ]
+
+
+class MermaidGraph(MermaidDiagram):
+    """
+    A mermaid subclass for generating subgraph diagrams.
+    """
+
+    def __init__(self, diagram_type: str = "graph", diagram_direction: str = "TB"):
+        super().__init__(diagram_type)
+        self.set_direction(diagram_direction)
+
+
+def create_subgraph_diagram() -> MermaidGraph:
+    """
+    Create a new graph diagram with subgraphs.
+    """
+    return MermaidGraph()
 
 
 def get_doorstop_doc_tree(tree: str) -> List[str]:
