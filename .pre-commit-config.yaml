@@ -51,9 +51,11 @@ repos:
         - --follow-imports=normal
         - --install-types
         - --non-interactive
+        -  --check-untyped-defs
       additional_dependencies:
-        - "munch[yaml]"
         - "munch-stubs @ git+https://github.com/VCTLabs/munch-stubs.git@main"
+        - "python-to-mermaid"
+        - "yaml_tools @ git+https://github.com/sarnold/yaml-tools.git@main"
       files: src/
 
   - repo: "https://github.com/asottile/blacken-docs"
