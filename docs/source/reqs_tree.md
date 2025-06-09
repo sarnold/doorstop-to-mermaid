@@ -1,6 +1,6 @@
-# 1.0 Requirements overview for ds2mermaid {#REQ001}
+# 1.0 Requirements {#REQ001}
 
-Requirements overview for ds2mermaid
+Requirements
 
 The ds2mermaid package is intended to visualize the links between document
 items in a doorstop document tree. A tree contains one or more documents,
@@ -28,3 +28,40 @@ The ds2mermaid package should support the following features/options.
 > The above item `short_name` is a custom doorstop attribute and
 > must be added to the doorstop config file, as well as populated
 > with the desired "alias" for the given item.
+
+
+## 1.1 REQ002 {#REQ002}
+
+The ds2mermaid console interface **Shall** set default values for required
+diagram options.
+
+*Child links: TST002*
+
+| Attribute | Value |
+| --------- | ----- |
+| normative | True |
+
+
+## 1.2 REQ003 {#REQ003}
+
+The ds2mermaid console interface **Shall** provide method(s) to
+edit/modify default values.
+
+*Child links: TST003*
+
+| Attribute | Value |
+| --------- | ----- |
+| normative | True |
+
+
+## 1.3 REQ004 {#REQ004}
+
+The ds2mermaid interface **Shall** provide the Graph diagram type as default.
+
+*Child links: TST002*
+
+| Attribute | Value |
+| --------- | ----- |
+| normative | True |
+
+

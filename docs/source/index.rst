@@ -10,10 +10,11 @@ ds2mermaid API and SW Docs
     :no_github_link:
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: Contents:
 
     reqs_tree.md
+    unit_tests.md
     README.md
     api/modules
     dev/generate-changelog
