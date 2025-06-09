@@ -1,0 +1,19 @@
+active: true
+derived: false
+doc:
+  by: sarnold
+  copyright: sarnold
+  major: '1'
+  minor: A
+  name: ds2mermaid
+  ref: ''
+  title: Requirements for _ds2mermaid_
+header: ''
+level: 1.3
+links: []
+normative: true
+ref: ''
+reviewed: TFGBeLGBc60T3hdNDM4SK4P-cduHM93zv3ewd-8Tq0k=
+short-name: ''
+text: |
+  The ds2mermaid interface **Shall** provide the Graph diagram type as default.

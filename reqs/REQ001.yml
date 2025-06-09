@@ -12,11 +12,11 @@ header: ''
 level: 1.0
 links: []
 normative: false
-short-name: reqs_overview
 ref: ''
-reviewed: null
+reviewed: TSIhqJK80PJLUeHOhlEzWk25sVK8VBUel-4dgxqQ7Hw=
+short-name: reqs_overview
 text: |
-  Requirements overview for ds2mermaid
+  Requirements
 
   The ds2mermaid package is intended to visualize the links between document
   items in a doorstop document tree. A tree contains one or more documents,
