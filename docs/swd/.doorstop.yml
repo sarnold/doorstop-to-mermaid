@@ -1,0 +1,21 @@
+settings:
+  digits: 3
+  itemformat: markdown
+  parent: REQ
+  prefix: SDD
+  sep: ''
+extensions:
+  item_sha_required: true  # sha256
+attributes:
+  defaults:
+    doc:
+      name: SW Design
+      title: SW Design Description
+      ref: ''
+      by: sarnold
+      major: '1'
+      minor: A
+      copyright: sarnold
+  publish:
+    - commentary
+    - rationale
