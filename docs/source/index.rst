@@ -13,9 +13,9 @@ ds2mermaid SW and API Docs
     :maxdepth: 1
     :caption: Contents:
 
-    reqs_tree
-    sw_design
-    unit_tests
+    ds/reqs_tree
+    ds/sw_design
+    ds/unit_tests
     README.md
     api/modules
     dev/generate-changelog
