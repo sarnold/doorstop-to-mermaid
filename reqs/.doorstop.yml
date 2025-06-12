@@ -1,0 +1,22 @@
+settings:
+  digits: 3
+  itemformat: yaml
+  prefix: REQ
+  sep: ''
+attributes:
+  reviewed:
+    - short-name
+  defaults:
+    short-name: ''
+    doc:
+      name: ds2mermaid
+      title: Requirements for _ds2mermaid_
+      ref: ''
+      by: sarnold
+      major: '1'
+      minor: A
+      copyright: sarnold
+  publish:
+    - commentary
+    - rationale
+    - normative

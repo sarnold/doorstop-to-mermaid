@@ -20,7 +20,7 @@ version = release
 
 project = proj_name
 author = 'Goleta Star, LLC'
-copyright = '2022 - ' + str(datetime.now().year) + f' {author}'
+copyright = str(datetime.now().year) + f' {author}'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -70,7 +70,7 @@ myst_enable_extensions = [
 # ]
 
 # sphinxcontrib.apidoc
-apidoc_module_dir = '../../src'
+apidoc_module_dir = f'../../src/{project}'
 apidoc_output_dir = 'api'
 apidoc_excluded_paths = ['scripts', 'tests']
 apidoc_module_first = True

@@ -1,0 +1,26 @@
+active: true
+derived: false
+doc:
+  by: sarnold
+  copyright: sarnold
+  major: '1'
+  minor: A
+  name: ds2mermaid
+  ref: ''
+  title: REQ Integration and Unit Tests
+header: ''
+level: 1.0
+links: []
+normative: false
+ref: ''
+reviewed: 5VUcKexS8cNS5d6Gg8WQxG0VFdOkaU3wpLn5ldNjbuE=
+short-name: unit_tests
+text: |
+  Automated Tests
+
+  Whether desktop or CI, run these tests from the project root,
+  after installing Python and [Tox](https://github.com/tox-dev/tox):
+
+  ```shell
+  tox -e py
+  ```

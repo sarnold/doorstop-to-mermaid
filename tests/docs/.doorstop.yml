@@ -1,0 +1,24 @@
+settings:
+  digits: 3
+  itemformat: yaml
+  parent: REQ
+  prefix: TST
+  sep: ''
+extensions:
+  item_sha_required: true  # sha256
+attributes:
+  reviewed:
+    - short-name
+  defaults:
+    short-name: ''
+    doc:
+      name: ds2mermaid
+      title: REQ Integration and Unit Tests
+      ref: ''
+      by: sarnold
+      major: '1'
+      minor: A
+      copyright: sarnold
+  publish:
+    - commentary
+    - rationale

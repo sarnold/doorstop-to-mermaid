@@ -1,4 +1,4 @@
-ds2mermaid API and SW Docs
+ds2mermaid SW and API Docs
 ==========================
 
 .. git_commit_detail::
@@ -10,9 +10,12 @@ ds2mermaid API and SW Docs
     :no_github_link:
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 1
     :caption: Contents:
 
+    ds/reqs_tree
+    ds/sw_design
+    ds/unit_tests
     README.md
     api/modules
     dev/generate-changelog

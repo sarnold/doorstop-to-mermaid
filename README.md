@@ -115,7 +115,7 @@ installing it using your system's package manager is recommended,
 otherwise install with pip into your usual virtual environment using
 something like:
 
-    sudo emerge pre-commit  --or--
+    sudo emerge pre-commit  # --or--
     pip install pre-commit
 
 then install it into the repo you just cloned:

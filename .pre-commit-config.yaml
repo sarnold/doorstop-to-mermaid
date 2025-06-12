@@ -23,7 +23,7 @@ repos:
         args: ['--remove']
       - id: trailing-whitespace
       - id: end-of-file-fixer
-        #exclude: '^spdx-sbom.txt'
+        exclude: '^(docs/)'
       - id: mixed-line-ending
         args: [--fix=lf]
       - id: check-toml
@@ -51,9 +51,11 @@ repos:
         - --follow-imports=normal
         - --install-types
         - --non-interactive
+        -  --check-untyped-defs
       additional_dependencies:
-        - "munch[yaml]"
         - "munch-stubs @ git+https://github.com/VCTLabs/munch-stubs.git@main"
+        - "python-to-mermaid"
+        - "yaml_tools @ git+https://github.com/sarnold/yaml-tools.git@main"
       files: src/
 
   - repo: "https://github.com/asottile/blacken-docs"
@@ -70,6 +72,7 @@ repos:
     hooks:
       - id: markdownlint-fix
         #args: ["--fix"]
+        exclude: '^(docs/)'
 
   - repo: https://github.com/PyCQA/doc8
     rev: v1.1.2

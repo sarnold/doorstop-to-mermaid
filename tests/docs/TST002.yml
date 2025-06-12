@@ -1,0 +1,30 @@
+active: true
+derived: false
+doc:
+  by: sarnold
+  copyright: sarnold
+  major: '1'
+  minor: A
+  name: ds2mermaid
+  ref: ''
+  title: REQ Integration and Unit Tests
+header: ''
+level: 1.1
+links:
+- REQ002: DASCQs7oyxZneKs_ElVbH496JoODCQlp1i0OriYA5Ug=
+- REQ004: TFGBeLGBc60T3hdNDM4SK4P-cduHM93zv3ewd-8Tq0k=
+normative: true
+ref: ''
+references:
+- keyword: REQ002
+  path: tests/test_diagram.py
+  sha: d2fd2fb8d62ac0498abce5e357e8125af19d2f696d84c510ebee851253d77adf
+  type: file
+- keyword: REQ004
+  path: tests/test_diagram.py
+  sha: d2fd2fb8d62ac0498abce5e357e8125af19d2f696d84c510ebee851253d77adf
+  type: file
+reviewed: aXoUj91YPwD_pydd9_2g3NVzTDrPIA9Qc7Pkgvr3Apg=
+short-name: defconfig
+text: |
+  Test default settings:
