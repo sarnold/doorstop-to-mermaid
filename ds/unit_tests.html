@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.0 Automated Tests {#TST001} &mdash; ds2mermaid 0.0.1.dev19 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=d36b2ada"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="doorstop-to-mermaid" href="../README.html" />
+    <link rel="prev" title="1.0 Design Elements {#SDD001}" href="sw_design.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ds2mermaid
+          </a>
+              <div class="version">
+                0.0.1.dev19
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="reqs_tree.html">1.0 Requirements {#REQ001}</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sw_design.html">1.0 Design Elements {#SDD001}</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1.0 Automated Tests {#TST001}</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#tst002-tst002">1.1 TST002 {#TST002}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tst003-tst003">1.2 TST003 {#TST003}</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../README.html">doorstop-to-mermaid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">ds2mermaid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/generate-changelog.html">Changelog Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/pre-commit-config.html">Contents of the <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/pre-commit-usage.html">Using Pre-Commit</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ds2mermaid</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">1.0 Automated Tests {#TST001}</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/ds/unit_tests.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="automated-tests-tst001">
+<h1>1.0 Automated Tests {#TST001}<a class="headerlink" href="#automated-tests-tst001" title="Link to this heading"></a></h1>
+<p>Automated Tests</p>
+<p>Whether desktop or CI, run these tests from the project root,
+after installing Python and <a class="reference external" href="https://github.com/tox-dev/tox">Tox</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>tox<span class="w"> </span>-e<span class="w"> </span>py
+</pre></div>
+</div>
+<section id="tst002-tst002">
+<h2>1.1 TST002 {#TST002}<a class="headerlink" href="#tst002-tst002" title="Link to this heading"></a></h2>
+<p>Test default settings:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">tests/test_diagram.py</span></code> (line 37)
+<code class="docutils literal notranslate"><span class="pre">tests/test_diagram.py</span></code> (line 51)</p>
+</div></blockquote>
+<p><em>Parent links: REQ002, REQ004</em></p>
+</section>
+<section id="tst003-tst003">
+<h2>1.2 TST003 {#TST003}<a class="headerlink" href="#tst003-tst003" title="Link to this heading"></a></h2>
+<p>Test non-default settings:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">tests/test_diagram.py</span></code> (line 9)</p>
+</div></blockquote>
+<p><em>Parent links: REQ003</em></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sw_design.html" class="btn btn-neutral float-left" title="1.0 Design Elements {#SDD001}" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../README.html" class="btn btn-neutral float-right" title="doorstop-to-mermaid" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025 Goleta Star, LLC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

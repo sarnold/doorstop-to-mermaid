@@ -1,0 +1,57 @@
+# 1.0 Design Elements {#SDD001}
+
+The ds2mermaid package provides a convenient interface and baseline
+(graph) format for generating a mermaid diagram with subgraphs from
+doorstop item links.
+
+The primary build/test dependency is python-to-mermaid, while
+doorstop is the primary runtime dependency for the required input
+data. Package dependencies are shown in the figure below:
+
+```{figure} assets/ds2m_dependency_graph.svg
+:width: 90 %
+:align: center
+:alt: doorstop-to-mermaid software units
+
+Doorstop-To-Mermaid Software Units (captured from mermaid to SVG or PNG).
+```
+
+<details>
+  <summary>ds2m_dependency_graph source</summary>
+  ds2mermaid dependency graph showing primary software units.
+
+```mermaid
+graph TB
+  subgraph id1[Static Dependencies]
+    subgraph id2[Packages]
+      A(ds2mermaid)
+      B(python-to-mermaid)
+      C(munch)
+      D{doorstop}
+    end
+  end
+  A ==> B & C
+  D ==> A
+  A -.-> D
+```
+</details>
+
+
+## 1.1 SDD002 {#SDD002}
+
+## ds2mermaid settings
+
+The baseline doorstop diagram needs the following:
+
+- the default mermaid diagram type is *Graph* and default direction is *TB*
+- the subgraph inputs are based on the discovered doorstop document prefixes
+- the graph node labels are item UIDs and the edges are item links
+
+The software should provide both class and console interfaces to adjust the
+above type and direction defaults, as well as accept a list of prefix strings.
+
+> `src/ds2mermaid/__init__.py` (line 14)
+
+*Parent links: REQ002, REQ003, REQ004*
+
+
