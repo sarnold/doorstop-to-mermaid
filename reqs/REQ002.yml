@@ -13,8 +13,8 @@ level: 1.1
 links: []
 normative: true
 ref: ''
-reviewed: OCaRhHi5vN5ea5D9bzEGbeLGaxGMNjhHp7D1fGdrits=
-short-name: console_defaults
+reviewed: DASCQs7oyxZneKs_ElVbH496JoODCQlp1i0OriYA5Ug=
+short-name: interface_defaults
 text: |
-  The ds2mermaid console interface **Shall** set default values for required
-  diagram options.
+  The ds2mermaid class and console interfaces **Shall** set default
+  values for required diagram options.

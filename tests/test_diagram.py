@@ -6,8 +6,7 @@ from ds2mermaid import MermaidGraph, create_subgraph_diagram
 
 def test_graph_diagram():
     """
-    Test if MermaidGraph has the right attributes and default diagram type.
-    Partially verifies REQ003
+    Test we can modify all the defaults. Partially verifies REQ003
     """
     graph = MermaidGraph(diagram_type="flowchart", diagram_direction="TD")
     graph.add_node("A", label="Circle Node")
@@ -33,6 +32,10 @@ def test_direct_shape_syntax():
 
 
 def test_create_subgraph_attrs():
+    """
+    Test if MermaidGraph has the right attributes and default diagram type.
+    Partially verifies REQ002
+    """
     graph = create_subgraph_diagram()
     assert isinstance(graph, MermaidGraph)
     assert hasattr(graph, 'subgraphs')
@@ -43,7 +46,10 @@ def test_create_subgraph_attrs():
 
 
 def test_create_edge():
-    """Test creating a MermaidEdge with various configurations."""
+    """
+    Test adding MermaidEdge with various configurations and default graph
+    settings.  Verifies REQ004
+    """
     # Basic edge
     edge = MermaidEdge("A", "B")
     assert edge.source == "A"
@@ -63,6 +69,8 @@ def test_create_edge():
     diagram.add_edge(edge)
     diagram.add_edge(edge1)
     diagram.add_edge(edge2)
+    assert diagram.diagram_type == "graph"
+    assert diagram.direction == "TB"
     assert len(diagram.edges) == 3
     assert diagram.edges[0] == edge
     print(diagram.to_subgraph())
