@@ -9,7 +9,7 @@ def test_graph_diagram():
     Test we can modify all the defaults. Partially verifies REQ003
     """
     graph = MermaidGraph(diagram_type="flowchart", diagram_direction="TD")
-    graph.add_node("A", label="Circle Node")
+    graph.add_node("A", label="Default Node")
     graph.add_node("B", shape="rounded", label="Rounded Node")
     assert isinstance(graph, MermaidGraph)
     assert graph.diagram_type == "flowchart"
