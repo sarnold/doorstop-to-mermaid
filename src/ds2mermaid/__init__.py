@@ -64,11 +64,11 @@ class MermaidGraph(MermaidDiagram):
         return "\n".join(lines)
 
 
-def create_subgraph_diagram() -> MermaidGraph:
+def create_subgraph_diagram(prefixes: Optional[List] = None) -> MermaidGraph:
     """
     Create a new graph diagram with subgraphs.
     """
-    return MermaidGraph()
+    return MermaidGraph(subgraphs=prefixes)
 
 
 def get_doorstop_doc_tree(tree: str) -> List[str]:
