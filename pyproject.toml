@@ -52,11 +52,16 @@ cov = [
     "coverage[toml]",
 ]
 doc = [
+    "myst-parser",
     "sphinx",
     "sphinxcontrib.apidoc",
     "sphinx_git",
-    "myst-parser",
+    "sphinxcontrib.mermaid",
     "sphinx_rtd_theme<3.0",
+    "sphinx-nefertiti",
+]
+reqs = [
+    "doorstop",
 ]
 test = [
     "pytest",

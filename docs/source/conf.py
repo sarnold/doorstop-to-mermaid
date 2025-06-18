@@ -19,7 +19,7 @@ release = version(proj_name).split("+")[0]
 version = release
 
 project = proj_name
-author = 'Goleta Star, LLC'
+author = 'Stephen L Arnold'
 copyright = str(datetime.now().year) + f' {author}'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -48,8 +48,10 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
     'myst_parser',
+    #'sphinxcontrib.mermaid',
 ]
 
+# myst_fence_as_directive = ["mermaid"]
 myst_suppress_warnings = ["myst.header"]
 myst_enable_extensions = [
     "attrs_inline",
@@ -57,17 +59,6 @@ myst_enable_extensions = [
     "fieldlist",
     "substitution",
 ]
-
-# autoapi
-# autoapi_dirs = ['../../src']
-
-# API docs
-# apidoc_modules = [
-# {
-# "path": f"../../src/{proj_name}",
-# "destination": "api/",
-# },
-# ]
 
 # sphinxcontrib.apidoc
 apidoc_module_dir = f'../../src/{project}'
@@ -104,7 +95,7 @@ language = 'en'
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'data']
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+# pygments_style = 'manni'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
@@ -115,16 +106,17 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+html_theme = "sphinx_nefertiti"
+# html_theme = 'sphinx_rtd_theme'
 # html_theme = 'classic'  # still has a version
 
-html_sidebars = {
-    '**': [
-        'searchfield.html',
-        'globaltoc.html',
-        'relations.html',
-    ]
-}
+# html_sidebars = {
+# '**': [
+# 'searchfield.html',
+# 'globaltoc.html',
+# 'relations.html',
+# ]
+# }
 
 
 # Theme options are theme-specific and customize the look and feel of a theme
