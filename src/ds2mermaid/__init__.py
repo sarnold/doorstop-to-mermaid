@@ -2,8 +2,10 @@
 Mermaid diagram subclass and helper functions.
 """
 
+import logging
 import re
 from importlib.metadata import version
+from shutil import which
 from typing import List, Optional
 
 from python_to_mermaid import MermaidDiagram
@@ -13,6 +15,7 @@ __version__ = version('ds2mermaid')
 __all__ = [
     "MermaidGraph",
     "__version__",
+    "check_for_doorstop",
     "create_subgraph_diagram",
     "get_doorstop_doc_tree",
 ]
@@ -62,6 +65,21 @@ class MermaidGraph(MermaidDiagram):
             lines.append(edge_str)
 
         return "\n".join(lines)
+
+
+def check_for_doorstop() -> str:
+    """
+    Make sure we can find the ``doorstop`` binary in the user environment
+    and return a path string.
+
+    :returns: program path string
+    """
+    doorstop_path: Optional[str] = None
+    doorstop_path = which('doorstop')
+    if not doorstop_path:
+        logging.warning('Cannot continue, no path found for doorstop')
+        raise FileNotFoundError("doorstop not found in PATH")
+    return doorstop_path
 
 
 def create_subgraph_diagram(prefixes: Optional[List] = None) -> MermaidGraph:
