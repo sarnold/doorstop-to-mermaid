@@ -1,0 +1,7 @@
+ds2mermaid
+==========
+
+.. toctree::
+   :maxdepth: 4
+
+   ds2mermaid
