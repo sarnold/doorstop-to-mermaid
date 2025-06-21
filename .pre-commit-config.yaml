@@ -23,7 +23,7 @@ repos:
         args: ['--remove']
       - id: trailing-whitespace
       - id: end-of-file-fixer
-        exclude: '^(docs/)'
+        exclude: '^(docs/swd/)'
       - id: mixed-line-ending
         args: [--fix=lf]
       - id: check-toml

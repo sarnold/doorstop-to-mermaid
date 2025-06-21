@@ -24,3 +24,10 @@ text: |
   ```shell
   tox -e py
   ```
+
+  To see test output, ie, code under test and print statements, append
+  the following positional arg to the above tox command:
+
+  ```shell
+  tox -e py -- no
+  ```

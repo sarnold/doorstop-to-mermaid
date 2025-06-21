@@ -1,3 +1,4 @@
+doorstop
 importlib-resources; python_version < "3.10"
 python-to-mermaid
 yaml_tools @ git+https://github.com/sarnold/yaml-tools.git@0.5.0#40c2be003c3e510ccb5340b1c9d321aea056b80f
