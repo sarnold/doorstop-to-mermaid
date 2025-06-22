@@ -54,6 +54,7 @@ def test_graph_diagram():
 def test_direct_shape_syntax():
     """Test that direct Mermaid syntax for shapes works."""
     diagram = MermaidGraph()
+    diagram.add_subgraph("Shape")
     node1 = MermaidNode(
         id="A",
         label="Custom Shape",
@@ -62,7 +63,10 @@ def test_direct_shape_syntax():
     )
     diagram.add_node(node1)
     node2 = MermaidNode(id="B", label="Another Shape")
-    assert "A{{Custom Shape}}" in diagram.to_subgraph()
+    diagram.add_node(node2)
+    diagram_str = diagram.to_subgraph()
+    print(diagram_str)
+    assert "A{{Custom Shape}}" in diagram_str
 
 
 def test_create_subgraph_attrs():

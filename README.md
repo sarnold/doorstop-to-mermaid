@@ -41,9 +41,24 @@ Mermaid-JS takes this philosophy and applies it to graphs, taking simple
 human-readable syntax and returning rich graphs.
 
 See the [unofficial example gist](https://gist.github.com/ChristopherA/bffddfdf7b1502215e44cec9fb766dfd)
-for example ideas.
+for example diagram ideas.
 
-## Dev tools
+## Quick start
+
+There are 2 ways to consume this project:
+
+* install the package and run the example script
+* add to your project dependencies and use the helper classes
+
+### Prerequisites
+
+Creating a useful diagram with the example script depends entirely on
+existing doorstop document data, ie, at least one document is required
+for the subgraph feature. The effective minimum for a *useful* diagram
+however, is a parent document *with at least one* child document that
+includes links to the parent.
+
+## Contributing
 
 Local tool dependencies to aid in development; install them for maximum
 enjoyment.
@@ -72,22 +87,22 @@ To build and check the Python package, run:
 
 Full list of additional `tox` commands:
 
-- `tox -e dev` build a python venv and install in editable mode
-- `tox -e build` build the python packages and run package checks
-- `tox -e check` install the wheel package from above
-- `tox -e lint` run `pylint` (somewhat less permissive than PEP8/flake8
+* `tox -e dev` build a python venv and install in editable mode
+* `tox -e build` build the python packages and run package checks
+* `tox -e check` install the wheel package from above
+* `tox -e lint` run `pylint` (somewhat less permissive than PEP8/flake8
   checks)
-- `tox -e mypy` run mypy import and type checking
-- `tox -e style` run flake8 style checks
-- `tox -e reuse` run the `reuse lint` command and install sbom4python
-- `tox -e changes` generate a new changelog file
+* `tox -e mypy` run mypy import and type checking
+* `tox -e style` run flake8 style checks
+* `tox -e reuse` run the `reuse lint` command and install sbom4python
+* `tox -e changes` generate a new changelog file
 
 To build/lint the api docs, use the following tox commands:
 
-- `tox -e docs` build the documentation using sphinx and the api-doc
+* `tox -e docs` build the documentation using sphinx and the api-doc
   plugin
-- `tox -e ldocs` run the Sphinx doc-link checking
-- `tox -e cdocs` run `make clean` in the docs build
+* `tox -e ldocs` run the Sphinx doc-link checking
+* `tox -e cdocs` run `make clean` in the docs build
 
 We use [gitchangelog](https://github.com/sarnold/gitchangelog) to
 generate a changelog and/or release notes, as well as the gitchangelog
@@ -138,10 +153,10 @@ the `REUSE.toml` configuration file with license text(s) in the
 Related metadata can be (re)generated with the following tools and
 command examples.
 
-- [reuse-tool](https://github.com/fsfe/reuse-tool) -
+* [reuse-tool](https://github.com/fsfe/reuse-tool) -
   [REUSE](https://reuse.software/spec-3.3/) compliance linting and sdist
   (source files) SBOM generation
-- [sbom4python](https://github.com/anthonyharrison/sbom4python) -
+* [sbom4python](https://github.com/anthonyharrison/sbom4python) -
   generate SBOM with full dependency chain
 
 ### Commands
