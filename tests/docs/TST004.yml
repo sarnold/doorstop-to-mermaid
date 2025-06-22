@@ -1,0 +1,26 @@
+active: true
+derived: false
+doc:
+  by: sarnold
+  copyright: sarnold
+  major: '1'
+  minor: A
+  name: ds2mermaid
+  ref: ''
+  title: REQ Integration and Unit Tests
+header: ''
+level: 1.3
+links:
+- REQ005: xE8GLx_sGGk9wEGCTWixd8Heawa71QrXGD-UGfH0qRg=
+- REQ006: BHpR9rjBhboWFcp14FQznES1Pf8aJ6-mOnE1yhf2eiQ=
+normative: true
+ref: ''
+references:
+- keyword: graph.subgraphs
+  path: tests/test_diagram.py
+  sha: 948be873a5fe2f635eb606b7151aa646f71d41bb4c3a082456a76cce679ad416
+  type: file
+reviewed: RINvZpMDo1HSx92Mp9pvrjeuK61qfa1wOeR-fwXgMWI=
+short-name: ''
+text: |
+  Test subgraph and node labels:

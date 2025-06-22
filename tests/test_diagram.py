@@ -1,7 +1,25 @@
 import pytest
 from python_to_mermaid import MermaidEdge, MermaidNode
 
-from ds2mermaid import MermaidGraph, create_subgraph_diagram
+from ds2mermaid import MermaidGraph, SubGraph, create_subgraph_diagram
+
+
+def test_graph_subgraph():
+    """
+    Test we can create and manipulate subgraph objects.
+    Verifies REQ005 and REQ006 for subgraph.nodes
+    """
+    node_lst = ["REQ001", "REQ002", "REQ003", "REQ004", "REQ005", "REQ006", "REQ007"]
+    expected = ["REQ001", "REQ002", "REQ003", "REQ004", "REQ005", "REQ006", "REQ007"]
+    subgraph = SubGraph("REQ", node_lst)
+    assert subgraph.name == "REQ"
+    assert len(subgraph.nodes) == 7
+    assert isinstance(subgraph.nodes, list)
+    subgraph.add_node("REQ008")
+    assert len(subgraph.nodes) == 8
+    expected.append("REQ008")
+    assert subgraph.nodes == expected
+    print(subgraph.nodes)
 
 
 def test_graph_diagram():
@@ -43,6 +61,22 @@ def test_create_subgraph_attrs():
     assert hasattr(graph, 'add_edge')
     assert graph.diagram_type == "graph"
     assert graph.direction == "TB"
+
+
+def test_create_subgraph_subgraphs():
+    """
+    Test if MermaidGraph has the right list of subgraphs.
+    Verifies REQ005 and REQ006 for graph.subgraphs
+    """
+    prefixes = ["REQS", "SDD", "TST"]
+    expected = ["REQS", "SDD", "TST"]
+    graph = create_subgraph_diagram(prefixes)
+    assert isinstance(graph, MermaidGraph)
+    assert graph.subgraphs == prefixes
+    graph.add_subgraph("EXT")
+    expected.append("EXT")
+    assert graph.subgraphs == expected
+    print(graph.subgraphs)
 
 
 def test_create_edge():
