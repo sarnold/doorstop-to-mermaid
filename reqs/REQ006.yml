@@ -1,0 +1,20 @@
+active: true
+derived: false
+doc:
+  by: sarnold
+  copyright: sarnold
+  major: '1'
+  minor: A
+  name: ds2mermaid
+  ref: ''
+  title: Requirements for _ds2mermaid_
+header: ''
+level: 1.5
+links: []
+normative: true
+ref: ''
+reviewed: BHpR9rjBhboWFcp14FQznES1Pf8aJ6-mOnE1yhf2eiQ=
+short-name: ''
+text: |
+  The ds2mermaid interface **Shall** allow the caller to add both subgraph
+  and node labels to an existing instance.

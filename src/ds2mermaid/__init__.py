@@ -14,6 +14,7 @@ __version__ = version('ds2mermaid')
 
 __all__ = [
     "MermaidGraph",
+    "SubGraph",
     "__version__",
     "check_for_doorstop",
     "create_subgraph_diagram",
@@ -21,9 +22,35 @@ __all__ = [
 ]
 
 
+class SubGraph:  # pylint: disable=too-few-public-methods
+    """
+    A SubGraph class to represent mermaid subgraphs (ie, individual subgraph
+    parts of a mermaid diagram).
+
+    :param name: prefix label for subgraph
+    :param nodes: list of prefix labels for subgraph nodes
+    """
+
+    def __init__(
+        self,
+        name: str,
+        nodes: Optional[List] = None,
+    ):
+        self.name = name
+        self.nodes = nodes or []
+
+    def add_node(self, node: str):
+        """Add a node label to the list of nodes"""
+        self.nodes.append(node)
+
+
 class MermaidGraph(MermaidDiagram):
     """
     A mermaid subclass for generating subgraph diagrams.
+
+    :param diagram_type: mermaid diagram type
+    :param diagram_direction: mermaid graph direction
+    :param subgraphs: list of doorstop prefix labels for subgraphs
     """
 
     def __init__(
@@ -33,8 +60,12 @@ class MermaidGraph(MermaidDiagram):
         subgraphs: Optional[List] = None,
     ):
         super().__init__(diagram_type)
-        self.subgraphs = subgraphs
+        self.subgraphs = subgraphs or []
         self.set_direction(diagram_direction)
+
+    def add_subgraph(self, subgraph: str):
+        """Add a subgraph label to the list of subgraphs"""
+        self.subgraphs.append(subgraph)
 
     def to_subgraph(self) -> str:
         """Convert the diagram to Mermaid syntax."""
