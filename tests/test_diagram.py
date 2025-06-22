@@ -9,15 +9,31 @@ def test_graph_subgraph():
     Test we can create and manipulate subgraph objects.
     Verifies REQ005 and REQ006 for subgraph.nodes
     """
-    node_lst = ["REQ001", "REQ002", "REQ003", "REQ004", "REQ005", "REQ006", "REQ007"]
-    expected = ["REQ001", "REQ002", "REQ003", "REQ004", "REQ005", "REQ006", "REQ007"]
-    subgraph = SubGraph("REQ", node_lst)
-    assert subgraph.name == "REQ"
+    node_lst = [
+        "REQS001",
+        "REQS002",
+        "REQS003",
+        "REQS004",
+        "REQS005",
+        "REQS006",
+        "REQS007",
+    ]
+    expected = [
+        "REQS001",
+        "REQS002",
+        "REQS003",
+        "REQS004",
+        "REQS005",
+        "REQS006",
+        "REQS007",
+    ]
+    subgraph = SubGraph("REQS", node_lst)
+    assert subgraph.name == "REQS"
     assert len(subgraph.nodes) == 7
     assert isinstance(subgraph.nodes, list)
-    subgraph.add_node("REQ008")
+    subgraph.add_node("REQS008")
     assert len(subgraph.nodes) == 8
-    expected.append("REQ008")
+    expected.append("REQS008")
     assert subgraph.nodes == expected
     print(subgraph.nodes)
 
