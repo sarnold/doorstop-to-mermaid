@@ -5,9 +5,9 @@ import pytest
 from munch import Munch
 
 from ds2mermaid import (
+    __version__,
     check_for_doorstop,
     get_doorstop_doc_tree,
-    version,
 )
 
 

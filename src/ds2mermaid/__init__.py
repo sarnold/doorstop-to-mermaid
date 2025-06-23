@@ -23,7 +23,7 @@ __all__ = [
 ]
 
 
-class SubGraph:
+class SubGraph:  # pylint: disable=too-few-public-methods
     """
     A SubGraph class to represent mermaid subgraphs (ie, individual subgraph
     parts of a mermaid diagram).
@@ -39,9 +39,6 @@ class SubGraph:
     ):
         self.name = name
         self.nodes = nodes or []
-
-    def __iter__(self):
-        yield from self.nodes
 
     def add_node(self, node: str):
         """Add a node label to the list of nodes"""
@@ -66,9 +63,6 @@ class MermaidGraph(MermaidDiagram):
         super().__init__(diagram_type)
         self.subgraphs = subgraphs or []
         self.set_direction(diagram_direction)
-
-    def __iter__(self):
-        yield from self.subgraphs
 
     def add_subgraph(self, subgraph: str):
         """Add a subgraph label to the list of subgraphs"""
