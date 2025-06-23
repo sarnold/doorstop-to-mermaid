@@ -38,6 +38,16 @@ def test_graph_subgraph():
     print(subgraph.nodes)
 
 
+def test_graph_subgraph_gen():
+    """we are also a generator"""
+    node_lst = ["INT001", "INT002", "INT003"]
+    subgraph = SubGraph("INT", node_lst)
+    assert len(subgraph.nodes) == 3
+    print(next(subgraph.__iter__()))
+    for node in subgraph:
+        assert "INT" in node
+
+
 def test_graph_diagram():
     """
     Test we can modify all the defaults. Partially verifies REQ003
@@ -62,7 +72,7 @@ def test_direct_shape_syntax():
         style={"fill": "#f9f", "stroke": "#333"},
     )
     diagram.add_node(node1)
-    node2 = MermaidNode(id="B", label="Another Shape")
+    node2 = MermaidNode(id="B", label="Another Shape", shape="rounded")
     diagram.add_node(node2)
     diagram_str = diagram.to_subgraph()
     print(diagram_str)
@@ -97,6 +107,8 @@ def test_create_subgraph_subgraphs():
     expected.append("EXT")
     assert graph.subgraphs == expected
     print(graph.subgraphs)
+    for sub in graph:
+        assert sub in expected
 
 
 def test_create_edge():
