@@ -5,21 +5,42 @@ Generate mermaid diagram source from a doorstop document tree.
 """
 
 import argparse
-import logging
 import sys
+from typing import List
 
 import doorstop
 
 from ds2mermaid import (  # pylint: disable=unused-import
     SubGraph,
     __version__,
-    check_for_doorstop,
     create_subgraph_diagram,
     get_doorstop_doc_tree,
 )
 
 TREE = doorstop.core.build()
 VERSION = __version__
+
+
+def create_diagram(debug: bool) -> str:
+    """
+    Collect some doorstop data and build a mermaid diagram.
+
+    :returns: mermaid diagram text
+    """
+    tree: List = get_doorstop_doc_tree(str(TREE))
+    if debug:
+        print(f"Found prefixes: {tree}")
+    graph = create_subgraph_diagram(tree)
+
+    for doc_n, document in enumerate(TREE.documents, start=1):
+        if doc_n > 4:
+            continue
+        for _i, item in enumerate(document.items, start=1):
+            graph.add_node(item.uid.value)
+            for link in item.links:
+                graph.add_edge(item.uid.value, link.value)
+
+    return graph.to_subgraph()
 
 
 def main(argv=None):
@@ -44,11 +65,8 @@ def main(argv=None):
 
     args = parser.parse_args()
 
-    # basic logging setup must come before any other logging calls
-    log_level = logging.DEBUG if args.verbose else logging.INFO
-    logging.basicConfig(stream=sys.stdout, level=log_level)
-    # printout()  # logging_tree
-    logging.info('Log level is set to %s', log_level)
+    out = create_diagram(args.verbose)
+    sys.stdout.write(out + '\n')
 
 
 if __name__ == '__main__':

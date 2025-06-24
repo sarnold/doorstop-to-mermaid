@@ -45,10 +45,10 @@ for example diagram ideas.
 
 ## Quick start
 
-There are 2 ways to consume this project:
+There are 2 ways to consume the ds2mermaid package:
 
-* install the package and run the example script
-* add to your project dependencies and use the helper classes
+* build and install the package and run the example script
+* add to your project dependencies and import the bits you need
 
 ### Prerequisites
 
