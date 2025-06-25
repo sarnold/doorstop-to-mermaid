@@ -45,10 +45,41 @@ for example diagram ideas.
 
 ## Quick start
 
-There are 2 ways to consume the ds2mermaid package:
+ds2mermaid is currently a small Python helper module for generating a
+mermaid diagram using subgraphs. The primary use case for subgraphs is
+to represent a set of doorstop documents, where each subgraph contains
+the nodes for a single document. Any links found in child docments are
+represented as mermaid edges from child to parent node.
+
+The package provides an example script to generate a diagram from the
+discovered document prefixes, item UIDs, and links.
+
+Therefor, the 2 ways to consume the ds2mermaid package are:
 
 * build and install the package and run the example script
-* add to your project dependencies and import the bits you need
+* add the package to your project dependencies and import the bits you need
+
+The current example script supports *very* minimal command options and
+there are no required arguments:
+
+    (dev) user@host $ gendiagram.py -h
+    usage: gendiagram.py [-h] [--version] [-v]
+
+    Example calling script for ds2mermaid
+
+    options:
+      -h, --help     show this help message and exit
+      --version      show program's version number and exit
+      -v, --verbose  display more logging info (default: False)
+
+Enabling the verbose option *will* pollute the top of the graph with
+a line of debug output. The script simply echoes the mermaid source
+to `stdout` which you can redirect to a file.
+
+### Caveats
+
+Mermaid on Github ignores any elk comments so Github rendering is limited
+to the default renderer, which is less than optimal.
 
 ### Prerequisites
 
@@ -57,6 +88,32 @@ existing doorstop document data, ie, at least one document is required
 for the subgraph feature. The effective minimum for a *useful* diagram
 however, is a parent document *with at least one* child document that
 includes links to the parent.
+
+### Install with pip
+
+This package is *not* yet published on PyPI, thus use one of the following
+to install ds2mermaid on any platform. Install from the main branch using:
+
+    pip install git+https://github.com/sarnold/doorstop-to-mermaid.git@main
+
+or use this command to install a specific release version:
+
+    pip install git+https://github.com/sarnold/doorstop-to-mermaid.git@0.1.0
+
+The full package provides the `ds2mermaid` module as well as a working
+example calling script.
+
+If you'd rather work from the source repository, it supports the common
+idiom to install it on your system in a virtual env after cloning:
+
+    python -m venv env
+    source env/bin/activate
+    (env) $ pip install .
+    (env) $ gendiagram.py --version
+    gendiagram.py 0.0.1.dev36+gd33fdf7
+    (env) $ deactivate
+
+The alternative to python venv is the Tox_ test driver shown below.
 
 ## Contributing
 
