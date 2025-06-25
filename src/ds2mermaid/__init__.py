@@ -3,6 +3,7 @@ Mermaid diagram subclass and helper functions.
 """
 
 import logging
+import os
 import re
 from importlib.metadata import version
 from shutil import which
@@ -71,22 +72,29 @@ class MermaidGraph(MermaidDiagram):
         """Convert the diagram to Mermaid syntax."""
         lines = [f"{self.diagram_type} {self.direction}"]
 
-        # Add nodes
-        for node in self.nodes:
-            node_str = f"    {node.id}"
-            if node.shape:
-                if isinstance(node.shape, tuple):
-                    start, end = node.shape
-                else:
-                    start, end = self.SHAPE_MAP[node.shape]
-                node_str += f"{start}{node.label or ''}{end}"
-            elif node.label:
-                node_str += f'["{node.label}"]'
+        for subgraph in self.subgraphs:
+            sub_begin_str = f"  subgraph {subgraph}"
+            lines.append(sub_begin_str)
 
-            if node.style:
-                style_str = ",".join(f"{k}:{v}" for k, v in node.style.items())
-                node_str += f" style {node.id} {style_str}"
-            lines.append(node_str)
+            # Add nodes
+            for node in [x for x in self.nodes if subgraph in str(x.label)]:
+                node_str = f"    {node.id}"
+                if node.shape:
+                    if isinstance(node.shape, tuple):
+                        start, end = node.shape
+                    else:
+                        start, end = self.SHAPE_MAP[node.shape]
+                    node_str += f"{start}{node.label or ''}{end}"
+                elif node.label:
+                    node_str += f'["{node.label}"]'
+
+                if node.style:
+                    style_str = ",".join(f"{k}:{v}" for k, v in node.style.items())
+                    node_str += f" style {node.id} {style_str}"
+                lines.append(node_str)
+
+            sub_end_str = "  end"
+            lines.append(sub_end_str)
 
         # Add edges
         for edge in self.edges:
@@ -95,7 +103,7 @@ class MermaidGraph(MermaidDiagram):
                 edge_str += f"|{edge.label}|"
             lines.append(edge_str)
 
-        return "\n".join(lines)
+        return f"{os.linesep}".join(lines)
 
 
 def check_for_doorstop() -> str:

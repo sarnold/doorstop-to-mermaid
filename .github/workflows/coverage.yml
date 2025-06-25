@@ -125,7 +125,7 @@ jobs:
 
   cov_data:
     name: Generate test coverage data
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       pull-requests: write
@@ -137,8 +137,8 @@ jobs:
       coverage: ${{ steps.coverage.outputs.coverage }}
       coverage-rounded-display: ${{ steps.coverage.outputs.coverage-rounded-display }}
     env:
-      PLATFORM: ubuntu-22.04
-      PYTHON: '3.11'
+      PLATFORM: ubuntu-24.04
+      PYTHON: '3.13'
       PYTHONIOENCODING: utf-8
       PIP_DOWNLOAD_CACHE: ${{ github.workspace }}/../.pip_download_cache
 

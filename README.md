@@ -41,9 +41,81 @@ Mermaid-JS takes this philosophy and applies it to graphs, taking simple
 human-readable syntax and returning rich graphs.
 
 See the [unofficial example gist](https://gist.github.com/ChristopherA/bffddfdf7b1502215e44cec9fb766dfd)
-for example ideas.
+for example diagram ideas.
 
-## Dev tools
+## Quick start
+
+ds2mermaid is currently a small Python helper module for generating a
+mermaid diagram using subgraphs. The primary use case for subgraphs is
+to represent a set of doorstop documents, where each subgraph contains
+the nodes for a single document. Any links found in child docments are
+represented as mermaid edges from child to parent node.
+
+The package provides an example script to generate a diagram from the
+discovered document prefixes, item UIDs, and links.
+
+Therefor, the 2 ways to consume the ds2mermaid package are:
+
+* build and install the package and run the example script
+* add the package to your project dependencies and import the bits you need
+
+The current example script supports *very* minimal command options and
+there are no required arguments:
+
+    (dev) user@host $ gendiagram.py -h
+    usage: gendiagram.py [-h] [--version] [-v]
+
+    Example calling script for ds2mermaid
+
+    options:
+      -h, --help     show this help message and exit
+      --version      show program's version number and exit
+      -v, --verbose  display more logging info (default: False)
+
+Enabling the verbose option *will* pollute the top of the graph with
+a line of debug output. The script simply echoes the mermaid source
+to `stdout` which you can redirect to a file.
+
+### Caveats
+
+Mermaid on Github ignores any elk comments so Github rendering is limited
+to the default renderer, which is less than optimal.
+
+### Prerequisites
+
+Creating a useful diagram with the example script depends entirely on
+existing doorstop document data, ie, at least one document is required
+for the subgraph feature. The effective minimum for a *useful* diagram
+however, is a parent document *with at least one* child document that
+includes links to the parent.
+
+### Install with pip
+
+This package is *not* yet published on PyPI, thus use one of the following
+to install ds2mermaid on any platform. Install from the main branch using:
+
+    pip install git+https://github.com/sarnold/doorstop-to-mermaid.git@main
+
+or use this command to install a specific release version:
+
+    pip install git+https://github.com/sarnold/doorstop-to-mermaid.git@0.1.0
+
+The full package provides the `ds2mermaid` module as well as a working
+example calling script.
+
+If you'd rather work from the source repository, it supports the common
+idiom to install it on your system in a virtual env after cloning:
+
+    python -m venv env
+    source env/bin/activate
+    (env) $ pip install .
+    (env) $ gendiagram.py --version
+    gendiagram.py 0.0.1.dev36+gd33fdf7
+    (env) $ deactivate
+
+The alternative to python venv is the Tox_ test driver shown below.
+
+## Contributing
 
 Local tool dependencies to aid in development; install them for maximum
 enjoyment.
@@ -72,22 +144,22 @@ To build and check the Python package, run:
 
 Full list of additional `tox` commands:
 
-- `tox -e dev` build a python venv and install in editable mode
-- `tox -e build` build the python packages and run package checks
-- `tox -e check` install the wheel package from above
-- `tox -e lint` run `pylint` (somewhat less permissive than PEP8/flake8
+* `tox -e dev` build a python venv and install in editable mode
+* `tox -e build` build the python packages and run package checks
+* `tox -e check` install the wheel package from above
+* `tox -e lint` run `pylint` (somewhat less permissive than PEP8/flake8
   checks)
-- `tox -e mypy` run mypy import and type checking
-- `tox -e style` run flake8 style checks
-- `tox -e reuse` run the `reuse lint` command and install sbom4python
-- `tox -e changes` generate a new changelog file
+* `tox -e mypy` run mypy import and type checking
+* `tox -e style` run flake8 style checks
+* `tox -e reuse` run the `reuse lint` command and install sbom4python
+* `tox -e changes` generate a new changelog file
 
 To build/lint the api docs, use the following tox commands:
 
-- `tox -e docs` build the documentation using sphinx and the api-doc
+* `tox -e docs` build the documentation using sphinx and the api-doc
   plugin
-- `tox -e ldocs` run the Sphinx doc-link checking
-- `tox -e cdocs` run `make clean` in the docs build
+* `tox -e ldocs` run the Sphinx doc-link checking
+* `tox -e cdocs` run `make clean` in the docs build
 
 We use [gitchangelog](https://github.com/sarnold/gitchangelog) to
 generate a changelog and/or release notes, as well as the gitchangelog
@@ -138,10 +210,10 @@ the `REUSE.toml` configuration file with license text(s) in the
 Related metadata can be (re)generated with the following tools and
 command examples.
 
-- [reuse-tool](https://github.com/fsfe/reuse-tool) -
+* [reuse-tool](https://github.com/fsfe/reuse-tool) -
   [REUSE](https://reuse.software/spec-3.3/) compliance linting and sdist
   (source files) SBOM generation
-- [sbom4python](https://github.com/anthonyharrison/sbom4python) -
+* [sbom4python](https://github.com/anthonyharrison/sbom4python) -
   generate SBOM with full dependency chain
 
 ### Commands

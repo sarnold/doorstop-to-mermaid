@@ -1,0 +1,23 @@
+active: true
+derived: false
+doc:
+  by: sarnold
+  copyright: sarnold
+  major: '1'
+  minor: A
+  name: ds2mermaid
+  ref: ''
+  title: Requirements for _ds2mermaid_
+header: ''
+level: 1.6
+links: []
+normative: true
+ref: ''
+reviewed: wHTH9dGABNOyYQXACv5QU3YHzSfLx4SVFJrCL6Dd7K8=
+short-name: ''
+text: |
+  The ds2mermaid software **Shall** delegate the following behaviors to the
+  calling code:
+
+  * collecting doorstop data, ie, document prefixes, links, and node uids
+  * adding subgraphs nodes, and edges using the above data
