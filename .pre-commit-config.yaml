@@ -2,7 +2,7 @@
 #   pre-commit install --install-hooks
 # To update the pre-commit hooks run:
 #   pre-commit autoupdate
-exclude: '^(.tox/|docs/conf.py$|^toxfile.py$|^setup.py$)'
+exclude: '^(.tox/|docs/source/conf.py$|^toxfile.py$|^setup.py$)'
 repos:
   - repo: meta
     hooks:
@@ -51,12 +51,12 @@ repos:
         - --follow-imports=normal
         - --install-types
         - --non-interactive
-        -  --check-untyped-defs
+        - --check-untyped-defs
       additional_dependencies:
         - "munch-stubs @ git+https://github.com/VCTLabs/munch-stubs.git@main"
         - "python-to-mermaid"
-        - "yaml_tools @ git+https://github.com/sarnold/yaml-tools.git@main"
-      files: src/
+        - "doorstop"
+      exclude: '^(docs/|tests/)'
 
   - repo: "https://github.com/asottile/blacken-docs"
     rev: "1.19.1"

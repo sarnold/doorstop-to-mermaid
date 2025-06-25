@@ -1,6 +1,21 @@
+# Configuration file for the Sphinx documentation builder.
+#
+# This file only contains a selection of the most common options. For a full
+# list see the documentation:
+# https://www.sphinx-doc.org/en/master/usage/configuration.html
+
+# -- Path setup --------------------------------------------------------------
+
+# If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+#
 import os
 import sys
+
 from datetime import datetime
+
+import sphinx_nefertiti
 
 if sys.version_info < (3, 8):
     from importlib_metadata import version
@@ -18,7 +33,7 @@ release = version(proj_name).split("+")[0]
 # we don't need no steenkeeng short X.Y version.
 version = release
 
-project = proj_name
+project = "doorstop-to-mermaid"
 author = 'Stephen L Arnold'
 copyright = str(datetime.now().year) + f' {author}'
 
@@ -30,14 +45,8 @@ description = 'Generate mermaid diagram source from a doorstop requirements docu
 
 # -- General configuration ------------------------------------------------
 
-# If your documentation needs a minimal Sphinx version, state it here.
-#
-# needs_sphinx = '1.0'
-# needs_sphinx = "8.2.0"
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
 extensions = [
     'sphinx_git',
     'sphinxcontrib.apidoc',
@@ -48,31 +57,39 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.viewcode',
     'myst_parser',
+    'sphinx_nefertiti',
     #'sphinxcontrib.mermaid',
 ]
+# do not render mermaid, show source instead
+#myst_fence_as_directive = ["mermaid"]
 
-# myst_fence_as_directive = ["mermaid"]
-myst_suppress_warnings = ["myst.header"]
 myst_enable_extensions = [
-    "attrs_inline",
-    "deflist",
-    "fieldlist",
-    "substitution",
+    'amsmath',
+    'attrs_block',
+    'colon_fence',
+    'deflist',
+    'dollarmath',
+    'fieldlist',
+    'tasklist',
+    'substitution',
 ]
 
+myst_suppress_warnings = ["myst.header"]
+
 # sphinxcontrib.apidoc
-apidoc_module_dir = f'../../src/{project}'
+apidoc_module_dir = f'../../src/{proj_name}'
 apidoc_output_dir = 'api'
 apidoc_excluded_paths = ['scripts', 'tests']
-apidoc_module_first = True
+apidoc_include_private = True
 apidoc_separate_modules = True
+
 autodoc_typehints = 'description'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
-# You can specify multiple suffix as a list of strings:
+# You can specify multiple suffix as a list of string:
 #
 source_suffix = {
     '.rst': 'restructuredtext',
@@ -100,45 +117,37 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'data']
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
+# test nefertiti settings
+language = "en"
+today_fmt = '%A %d. %B %Y, %H:%M'
 
-# -- Options for HTML output ----------------------------------------------
-
-# The theme to use for HTML and HTML Help pages.  See the documentation for
-# a list of builtin themes.
-#
 html_theme = "sphinx_nefertiti"
-# html_theme = 'sphinx_rtd_theme'
-# html_theme = 'classic'  # still has a version
 
-# html_sidebars = {
-# '**': [
-# 'searchfield.html',
-# 'globaltoc.html',
-# 'relations.html',
-# ]
-# }
+html_theme_options = {
+    "monospace_font_size": ".90rem",
 
+    "style": "blue",
+    "style_header_neutral": True,
+    "pygments_light_style": "pastie",
+    "pygments_dark_style": "dracula",
 
-# Theme options are theme-specific and customize the look and feel of a theme
-# further.  For a list of options available for each theme, see the
-# documentation.
-#
-# html_theme_options = {}
+    "repository_url": f"https://github.com/sarnold/{project}",
+    "repository_name": f"{project}",
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
+    "current_version": "latest",
+    "versions": [
+        (f"v{version}", f"https://sarnold.github.io/{project}/"),
+    ],
 
-# Custom sidebar templates, must be a dictionary that maps document names
-# to template names.
-#
+    "show_colorset_choices": True,
+    # Return user's to 'blue' after a day since color was picked.
+    "reset_colorset_choice_after_ms": 1000 * 60 * 60 * 24,
+}
 
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'ds2mermaiddoc'
-
+htmlhelp_basename = f'{proj_name}doc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -146,12 +155,15 @@ latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
     # 'papersize': 'letterpaper',
+
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
+
     # Additional stuff for the LaTeX preamble.
     #
     # 'preamble': '',
+
     # Latex figure (float) alignment
     #
     # 'figure_align': 'htbp',
@@ -188,3 +200,4 @@ texinfo_documents = [
         'Miscellaneous',
     ),
 ]
+

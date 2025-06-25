@@ -10,15 +10,10 @@ from typing import List
 
 import doorstop
 
-from ds2mermaid import (  # pylint: disable=unused-import
-    SubGraph,
-    __version__,
-    create_subgraph_diagram,
-    get_doorstop_doc_tree,
-)
+from ds2mermaid import __version__ as VERSION
+from ds2mermaid import create_subgraph_diagram, get_doorstop_doc_tree
 
 TREE = doorstop.core.build()
-VERSION = __version__
 
 
 def create_diagram(debug: bool) -> str:
@@ -38,9 +33,9 @@ def create_diagram(debug: bool) -> str:
         for _i, item in enumerate(document.items, start=1):
             graph.add_node(item.uid.value)
             for link in item.links:
-                graph.add_edge(item.uid.value, link.value)
+                graph.add_edge(item.uid.value, link.value, style="---->")
 
-    return graph.to_subgraph()
+    return str(graph.to_subgraph())
 
 
 def main(argv=None):
