@@ -106,14 +106,15 @@ example calling script.
 If you'd rather work from the source repository, it supports the common
 idiom to install it on your system in a virtual env after cloning:
 
-    python -m venv env
+    python -m venv venv
     source env/bin/activate
-    (env) $ pip install .
-    (env) $ gendiagram.py --version
+    (venv) $ pip install .
+    (venv) $ gendiagram.py --version
     gendiagram.py 0.0.1.dev36+gd33fdf7
-    (env) $ deactivate
+    (venv) $ deactivate
 
-The alternative to python venv is the Tox_ test driver shown below.
+The alternative to python venv is the [Tox](https://tox.wiki/en/4.27.0/)
+test driver shown below.
 
 ## Contributing
 
