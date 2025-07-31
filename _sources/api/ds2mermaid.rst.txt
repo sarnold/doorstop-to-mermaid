@@ -1,0 +1,10 @@
+ds2mermaid package
+==================
+
+Module contents
+---------------
+
+.. automodule:: ds2mermaid
+   :members:
+   :undoc-members:
+   :show-inheritance:
