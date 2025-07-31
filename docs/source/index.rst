@@ -16,11 +16,12 @@ ds2mermaid SW and API Docs
     ds/reqs_tree
     ds/sw_design
     ds/unit_tests
-    README.md
+    README
     api/modules
     dev/generate-changelog
     dev/pre-commit-config
     dev/pre-commit-usage
+    CHANGELOG
 
 Recent changes
 ==============
