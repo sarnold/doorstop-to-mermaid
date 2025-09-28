@@ -84,7 +84,7 @@ script-files = [
 [tool.pytest.ini_options]
 minversion = "6.0"
 testpaths = ["tests",]
-log_cli =  true
+log_cli =  false
 doctest_optionflags = ["ELLIPSIS", "NORMALIZE_WHITESPACE",]
 addopts = "--strict-markers"
 markers = "subscript"
