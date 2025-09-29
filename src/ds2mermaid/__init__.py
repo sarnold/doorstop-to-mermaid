@@ -9,6 +9,7 @@ from importlib.metadata import version
 from shutil import which
 from typing import List, Optional
 
+import doorstop
 from python_to_mermaid import MermaidDiagram
 
 __version__ = version('ds2mermaid')
@@ -18,6 +19,7 @@ __all__ = [
     "SubGraph",
     "__version__",
     "check_for_doorstop",
+    "create_diagram",
     "create_subgraph_diagram",
     "get_doorstop_doc_tree",
 ]
@@ -126,6 +128,31 @@ def create_subgraph_diagram(prefixes: Optional[List] = None) -> MermaidGraph:
     Create a new graph diagram with subgraphs.
     """
     return MermaidGraph(subgraphs=prefixes)
+
+
+def create_diagram(debug: bool) -> str:
+    """
+    Collect some doorstop data and build a mermaid diagram.
+
+    :param debug: verbosity flag
+    :returns: mermaid diagram text
+    """
+    dtree = doorstop.core.build()
+    tree: List = get_doorstop_doc_tree(str(dtree))
+
+    if debug:
+        print(f"Found prefixes: {tree}")
+    graph = create_subgraph_diagram(tree)
+
+    for doc_n, document in enumerate(dtree.documents, start=1):
+        if doc_n > 4:
+            continue
+        for _i, item in enumerate(document.items, start=1):
+            graph.add_node(item.uid.value)
+            for link in item.links:
+                graph.add_edge(item.uid.value, link.value, style="---->")
+
+    return str(graph.to_subgraph())
 
 
 def get_doorstop_doc_tree(tree: str) -> List[str]:

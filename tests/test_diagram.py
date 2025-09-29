@@ -1,3 +1,5 @@
+import sys
+
 import doorstop
 import pytest
 from python_to_mermaid import MermaidEdge, MermaidNode
@@ -5,9 +7,12 @@ from python_to_mermaid import MermaidEdge, MermaidNode
 from ds2mermaid import (
     MermaidGraph,
     SubGraph,
+    create_diagram,
     create_subgraph_diagram,
     get_doorstop_doc_tree,
 )
+
+WIN32 = sys.platform == 'win32'
 
 
 def test_graph_subgraph():
@@ -136,26 +141,20 @@ def test_create_edge():
     print(diagram.to_subgraph())
 
 
-def test_gen_diagram():
+def test_create_diagram(capsys):
     """
-    Test full diagram genration
+    Test full diagram genration.
     """
-    TREE = doorstop.core.build()
-    exp_tree_str = "REQ <- [ TST, SDD ]"
-    exp_tree_str_win = "REQ <- [ SDD, TST ]"
-    exp_tree = ['REQ', 'TST', 'SDD']
-    exp_tree_win = ['REQ', 'SDD', 'TST']
-    tree = get_doorstop_doc_tree(str(TREE))
-    graph = create_subgraph_diagram(tree)
-    assert str(TREE) == exp_tree_str or exp_tree_str_win
-    assert tree == exp_tree or exp_tree_win
-    print(tree)
-    for doc_num, document in enumerate(TREE.documents, start=1):
-        if doc_num > 4:
-            continue
-        for _i, item in enumerate(document.items, start=1):
-            graph.add_node(item.uid.value)
-            for link in item.links:
-                graph.add_edge(item.uid.value, link.value, style="---->")
-    diagram_str = graph.to_subgraph()
-    print(diagram_str)
+    exp_prefixes = str(['REQ', 'TST', 'SDD'])
+    exp_prefixes_win = str(['REQ', 'SDD', 'TST'])
+    exp_subgraphs = ["subgraph REQ", "subgraph TST", "subgraph SDD"]
+
+    _ = create_diagram(True)
+    # print(diagram_str)
+    captured = capsys.readouterr()
+    assert "Found prefixes:" in captured.out
+    assert exp_prefixes_win in captured.out or exp_prefixes in captured.out
+
+    diagram_str = create_diagram(False)
+    for item in exp_subgraphs:
+        assert item in diagram_str
