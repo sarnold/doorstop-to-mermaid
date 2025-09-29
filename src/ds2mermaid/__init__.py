@@ -85,7 +85,7 @@ class MermaidGraph(MermaidDiagram):
                     else:
                         start, end = self.SHAPE_MAP[node.shape]
                     node_str += f"{start}{node.label or ''}{end}"
-                elif node.label:
+                if node.label:
                     node_str += f'["{node.label}"]'
 
                 if node.style:

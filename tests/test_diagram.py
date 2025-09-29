@@ -1,7 +1,13 @@
+import doorstop
 import pytest
 from python_to_mermaid import MermaidEdge, MermaidNode
 
-from ds2mermaid import MermaidGraph, SubGraph, create_subgraph_diagram
+from ds2mermaid import (
+    MermaidGraph,
+    SubGraph,
+    create_subgraph_diagram,
+    get_doorstop_doc_tree,
+)
 
 
 def test_graph_subgraph():
@@ -128,3 +134,28 @@ def test_create_edge():
     assert len(diagram.edges) == 3
     assert diagram.edges[0] == edge
     print(diagram.to_subgraph())
+
+
+def test_gen_diagram():
+    """
+    Test full diagram genration
+    """
+    TREE = doorstop.core.build()
+    exp_tree_str = "REQ <- [ TST, SDD ]"
+    exp_tree_str_win = "REQ <- [ SDD, TST ]"
+    exp_tree = ['REQ', 'TST', 'SDD']
+    exp_tree_win = ['REQ', 'SDD', 'TST']
+    tree = get_doorstop_doc_tree(str(TREE))
+    graph = create_subgraph_diagram(tree)
+    assert str(TREE) == exp_tree_str or exp_tree_str_win
+    assert tree == exp_tree or exp_tree_win
+    print(tree)
+    for doc_num, document in enumerate(TREE.documents, start=1):
+        if doc_num > 4:
+            continue
+        for _i, item in enumerate(document.items, start=1):
+            graph.add_node(item.uid.value)
+            for link in item.links:
+                graph.add_edge(item.uid.value, link.value, style="---->")
+    diagram_str = graph.to_subgraph()
+    print(diagram_str)
