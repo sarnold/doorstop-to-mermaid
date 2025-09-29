@@ -80,6 +80,7 @@ myst_suppress_warnings = ["myst.header"]
 apidoc_module_dir = f'../../src/{proj_name}'
 apidoc_output_dir = 'api'
 apidoc_excluded_paths = ['scripts', 'tests']
+apidoc_module_first = True
 apidoc_include_private = True
 apidoc_separate_modules = True
 
