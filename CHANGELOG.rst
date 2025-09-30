@@ -2,7 +2,27 @@ Changelog
 =========
 
 
-0.1.1 (2025-07-30)
+0.2.0 (2025-07-31)
+------------------
+
+Changes
+~~~~~~~
+- Refactor create_diagram and move it from script to module. [Stephen L
+  Arnold]
+
+  * update script to use new import, refactor test
+- Reset dogfood diagram for (re)rendering. [Stephen L Arnold]
+- Add end-to-end diagram test, cleanup lint and mypy config. [Stephen L
+  Arnold]
+
+  * adjust expected results for test_gen_diagram on windows
+- Revert readme format from markdown back to reStructuredText. [Stephen
+  L Arnold]
+
+  * cleanup tox dev env, docs sources, and test bits, remove README.md
+
+
+0.1.1 (2025-07-31)
 ------------------
 
 Changes
