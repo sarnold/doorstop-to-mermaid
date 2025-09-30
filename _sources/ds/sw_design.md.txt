@@ -1,0 +1,162 @@
+# 1.0 Design Elements {#SDD001}
+
+The ds2mermaid package provides a convenient interface and baseline
+(graph) format for generating a mermaid diagram with subgraphs from
+doorstop item links.
+
+The primary install dependencies are python-to-mermaid, doorstop, and
+munch, where doorstop is the primary runtime dependency for the actual
+diagram input data. Complete package dependencies are shown in the
+figure below:
+
+```{figure} assets/ds2m_dependency_graph.svg
+:width: 90 %
+:align: center
+:alt: doorstop-to-mermaid software units
+
+Doorstop-To-Mermaid Software Units (captured from mermaid to SVG or PNG).
+```
+
+
+<details>
+  <summary>ds2m_dependency_graph source</summary>
+  ds2mermaid dependency graph showing primary software units.
+
+```
+  graph TB
+    subgraph id1[ds2mermaid Dependencies]
+      subgraph id2[Python Packages]
+        A(ds2mermaid)
+        B(python-to-mermaid)
+        C(munch)
+        D{doorstop}
+      end
+    end
+    A ==> B & C & D
+    D -.-> A
+```
+</details>
+
+## Design decisions
+
+Python-to-mermaid provides a basic set of mermaid diagram classes, mainly
+MermaidDiagram, MermaidEdge, and MermaidNode. The primary diagram class
+provides methods to add nodes and edges, as well as a ``to_mermaid()``
+method to generate the final diagram text as a string.
+
+ds2mermaid satisfies the following decision points:
+
+* MermaidGraph is a sublass of MermaidDiagram with its own ``to_subgraph()``
+  method
+* MermaidGraph interface includes diagram type and direction, as well as
+  a list of subgraph names
+* new class to represent subgraph items (currently name and node-list)
+* discovered doorstop document prefixes become subgraph labels
+* document item uids become subgraph node labels
+* document links become subgraph edges
+
+Customizing node shapes or styling graph attributes will most likely need
+a user config, eg, a YAML configuration in XDG platform path.
+
+### Dogfood diagram
+
+The following diagram was generated using the example ``gendiagram``
+script. However, the current mermaid support in github *does not* yet
+include the elk layout package so the configuration snippet is not
+respected.
+
+```{figure} assets/ds2m_traceability_graph.svg
+:width: 90 %
+:align: center
+:alt: doorstop-to-mermaid traceability links
+
+Doorstop-To-Mermaid Traceability Links (captured from mermaid to SVG or PNG).
+```
+
+<details>
+  <summary>ds2m_traceability_graph source</summary>
+  ds2mermaid requirements traceability graph showing child links.
+
+```mermaid
+%%{
+  init: {
+    'theme': 'base',
+    'flowchart': {
+      'defaultRenderer': 'elk',
+      'mergeEdges': false,
+    }
+  }
+}%%
+
+graph TB
+  subgraph REQ
+    REQ001["REQ001"]
+    REQ002["REQ002"]
+    REQ003["REQ003"]
+    REQ004["REQ004"]
+    REQ005["REQ005"]
+    REQ006["REQ006"]
+    REQ007["REQ007"]
+  end
+  subgraph TST
+    TST001["TST001"]
+    TST002["TST002"]
+    TST003["TST003"]
+    TST004["TST004"]
+  end
+  subgraph SDD
+    SDD001["SDD001"]
+    SDD002["SDD002"]
+    SDD003["SDD003"]
+  end
+    TST002 ----> REQ002
+    TST002 ----> REQ004
+    TST003 ----> REQ003
+    TST004 ----> REQ005
+    TST004 ----> REQ006
+    SDD002 ----> REQ002
+    SDD002 ----> REQ003
+    SDD002 ----> REQ004
+    SDD003 ----> REQ007
+```
+</details>
+
+
+## 1.1 SDD002 {#SDD002}
+
+## ds2mermaid settings
+
+The baseline doorstop diagram needs the following:
+
+- the default mermaid diagram type is *Graph* and default direction is *TB*
+- the subgraph inputs are based on the discovered doorstop document prefixes
+- the graph node labels are item UIDs and the edges are item links
+
+The software should provide both class and console interfaces to adjust the
+above type and direction defaults, as well as accept a list of prefix strings.
+
+> `src/ds2mermaid/__init__.py` (line 18)
+
+*Parent links: REQ002, REQ003, REQ004*
+
+
+## 1.2 SDD003 {#SDD003}
+
+## ds2mermaid caller responsibilities
+
+The ds2mermaid helper classes *do not* include any doorstop imports or
+related functionality. Therefor it is the responsibility of the caller
+software to discover the required (doorstop) data and  use it to create
+the lists of document prefix strings, node UIDs, and links for each of
+the discovered doorstop documents.
+
+ds2mermaid itself has a doorstop document tree and an "example" user
+script that demonstrates the following:
+
+- building a doorstop document tree
+- looping through lists of documents and document items
+- loading diagram nodes and edges
+
+*Parent links: REQ007*
+
+
